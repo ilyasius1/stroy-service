@@ -1,0 +1,56 @@
+.ss-contacts {
+    &__map-info {
+        margin-top: 50px;
+        width: 510px;
+        height: 400px;
+        background-color: #ffffff;
+        position: absolute;
+        z-index: 1000;
+        border-radius: 10px;
+        padding: 30px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    &__map-addr-header {
+        font-weight: 700;
+        font-size: 17px;
+        line-height: 23px;
+        margin-bottom: 5px;
+    }
+    &__map-text {
+        display: flex;
+        align-items: baseline;
+        img {
+            margin-right: 5px;
+            width: 12px;
+            height: 12px;
+        }
+        a {
+            color: inherit;
+            margin-left: 10px;
+        }
+    }
+    &__map-block {
+        margin-bottom: 10px;
+    }
+}
+@media (max-width: 760px) {
+    .ss-contacts {
+        &__map-info {
+            width: 345px;
+        }
+        &__map-addr-header {
+            font-size: 15px;
+        }
+        &__map-text {
+            font-size: 12px;
+            img {
+            }
+            a {
+            }
+        }
+        &__map-block {
+        }
+    }
+}

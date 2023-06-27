@@ -1,0 +1,198 @@
+.ss-house {
+  &__info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 48px;
+  }
+  &__slider {
+    width: 756px;
+    height: 476px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
+    flex-shrink: unset;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+  }
+  &__slider-image {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+  &__nav-buttons {
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+    top: 50%;
+    left: 0;
+    right: 0;
+  }
+  &__nav-button {
+    position: absolute;
+    top: 50%;
+    display: block;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    transition: all 0.5s;
+    background-color: rgba(255, 255, 255, 0.2);
+    background-image: url('data:image/svg+xml,<%3Fxml version="1.0" encoding="iso-8859-1"%3F><!-- Generator: Adobe Illustrator 19.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0) --><svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 55.751 55.751" style="enable-background:new 0 0 55.751 55.751;" xml:space="preserve" fill="%23fff"><g><path d="M31.836,43.006c0.282-0.281,0.518-0.59,0.725-0.912L54.17,20.485c2.107-2.109,2.109-5.528,0-7.638c-2.109-2.107-5.527-2.109-7.638,0l-18.608,18.61L9.217,12.753c-2.109-2.108-5.527-2.109-7.637,0C0.527,13.809-0.002,15.19,0,16.571c-0.002,1.382,0.527,2.764,1.582,3.816l21.703,21.706c0.207,0.323,0.445,0.631,0.729,0.913c1.078,1.078,2.496,1.597,3.91,1.572C29.336,44.604,30.758,44.084,31.836,43.006z"/></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg>');
+    background-size: 12px 19px;
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+    &--prev {
+      transform: rotate(90deg);
+      left: 20px;
+    }
+    &--next {
+      transform: rotate(-90deg);
+      right: 20px;
+    }
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.5);
+    }
+  }
+  &__thumbnails {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 250px);
+    justify-content: space-between;
+  }
+  &__thumbnail {
+    width: 250px;
+    height: 170px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    cursor: pointer;
+  }
+}
+
+.general {
+  display: flex;
+  padding: 42px;
+  justify-content: space-between;
+  flex-grow: 1;
+  &__infoblock {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+  &__header {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 17px;
+  }
+
+  &__info {
+    color: #b4b4b4;
+    text-decoration: underline;
+    margin: 18px 0;
+  }
+  &__btn {
+    width: 220px;
+  }
+  &__prices {
+    text-align: center;
+    p {
+      line-height: 30px;
+      span {
+        font-size: 22px;
+        font-weight: 700;
+      }
+    }
+  }
+}
+.variables {
+  background-color: #ededed;
+  &__conteiner {
+    display: flex;
+  }
+  &__col {
+    width: 50%;
+  }
+  &__header {
+    height: 70px;
+    color: $text-white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    &--fullConstruction {
+      background-color: $btn-green;
+    }
+    &--withoutFinishing {
+      background-color: $btn-grey;
+    }
+  }
+}
+
+@media (max-width: 1630px) {
+  .ss-house {
+    &__slider {
+      width: 500px;
+      height: 402px;
+    }
+  }
+}
+@media (max-width: 1280px) {
+  .ss-house {
+    &__slider {
+      width: 740px;
+      height: 460px;
+    }
+    &__info {
+      flex-direction: column;
+    }
+    &__thumbnails {
+      grid-template-columns: repeat(auto-fill, 230px);
+    }
+    &__thumbnail {
+      width: 230px;
+      height: 160px;
+    }
+  }
+}
+@media (max-width: 760px) {
+  .ss-house {
+    &__slider {
+      width: 345px;
+      height: 250px;
+    }
+    &__thumbnails {
+      grid-template-columns: repeat(auto-fill, 165px);
+    }
+    &__thumbnail {
+      width: 165px;
+      height: 104px;
+    }
+  }
+  .general {
+    flex-direction: column;
+    padding: 5px;
+    &__infoblock {
+      margin-top: 20px;
+    }
+    &__btn {
+      width: 345px;
+    }
+  }
+  .variables {
+    &__conteiner {
+      flex-direction: column;
+    }
+    &__col {
+      width: 100%;
+    }
+    &__list-cont {
+      padding-right: 5px;
+    }
+  }
+}

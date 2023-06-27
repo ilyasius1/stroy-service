@@ -1,0 +1,46 @@
+/**********
+/* NORMALIZE */
+@import "./normalize.scss";
+
+/**********
+/* MIXINS */
+// @import "./mixins.scss";
+
+/**********
+/* VARIABLES */
+ @import "./variables.scss";
+
+/**********
+
+/* BASE */
+@import "./base";
+
+/**********
+/* ELEMENTS */
+
+@import "./elements/ss-btn.scss";
+@import "./elements/ss-section-header.scss";
+@import "./elements/ss-loader.scss";
+
+/**********
+/* COMPONENTS */
+
+@import "./components/ss-header.scss";
+@import "./components/ss-social.scss";
+@import "./components/ss-footer.scss";
+@import "./components/ss-contacts.scss";
+@import "./components/ss-slider.scss";
+@import "./components/ss-categories.scss";
+@import "./components/ss-projects.scss";
+@import "./components/ss-modal.scss";
+@import "./components/ss-house.scss";
+@import "./components/ss-send-us.scss";
+@import "./components/ss-modal-gallery.scss";
+
+/**********
+/* PAGES */
+ @import "./pages/page-not-found.scss";
+
+/**********
+/* FONTS */
+@import "./fonts.scss";

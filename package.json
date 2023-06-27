@@ -1,0 +1,39 @@
+{
+    "name": "stroy-service",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+        "dev": "vite",
+        "preview": "vite preview --port 8080",
+        "build": "vite build"
+    },
+    "dependencies": {
+        "core-js": "^3.8.3",
+        "vue": "^3.2.13",
+        "vue-agile": "^2.0.0",
+        "vue-router": "^4.0.3",
+        "vuex": "^4.0.0"
+    },
+    "devDependencies": {
+        "@babel/core": "^7.12.16",
+        "@babel/eslint-parser": "^7.12.16",
+        "@rollup/plugin-alias": "^5.0.0",
+        "@rollup/plugin-node-resolve": "^15.1.0",
+        "@vitejs/plugin-vue": "^4.2.3",
+        "axios": "^1.1.2",
+        "babel-plugin-module-resolver": "^5.0.0",
+        "eslint": "^7.32.0",
+        "eslint-config-prettier": "^8.3.0",
+        "eslint-plugin-prettier": "^4.0.0",
+        "eslint-plugin-vue": "^8.0.3",
+        "gh-pages": "^3.0.0",
+        "laravel-vite-plugin": "^0.7.5",
+        "lint-staged": "^13.2.2",
+        "prettier": "^2.4.1",
+        "resolve-url-loader": "^5.0.0",
+        "sass": "^1.63.6",
+        "sass-loader": "^13.3.1",
+        "vite": "^4.0.0",
+        "vite-aliases": "^0.11.2"
+    }
+}

@@ -1,0 +1,37 @@
+body {
+    // font-family: "Manrope", sans-serif;
+    font-family: "Manrope", sans-serif;
+    font-size: 15px;
+    color: $text-main;
+    line-height: 21px;
+    // min-width: $min-width-desktop;
+}
+.container {
+    width: 1630px;
+    padding: 0 15px;
+    margin: 0 auto;
+}
+@media (max-width: 1630px) {
+    .container {
+        width: 1280px;
+        padding: 0 10px;
+        margin: 0 auto;
+    }
+}
+@media (max-width: 1280px) {
+    .container {
+        width: 760px;
+        padding: 0 10px;
+        margin: 0 auto;
+    }
+}
+@media (max-width: 760px) {
+    body {
+        min-width: 375px;
+    }
+    .container {
+        width: 375px;
+        padding: 0 15px;
+        margin: 0 auto;
+    }
+}

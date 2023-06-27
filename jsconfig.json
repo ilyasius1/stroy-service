@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "esnext",
+    "baseUrl": "./resources",
+    "moduleResolution": "node",
+    "paths": {
+      "@/*": ["resources/*"],
+      "^img/*": ["resources/assets/img/*"]
+    },
+    "lib": ["esnext", "dom", "dom.iterable", "scripthost"]
+  }
+}

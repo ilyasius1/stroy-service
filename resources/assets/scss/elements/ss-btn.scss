@@ -1,0 +1,81 @@
+.ss-btn {
+  font-weight: 700;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background-color: $btn-green;
+  color: $text-white;
+  border-radius: 10px;
+  transition: all 0.3s;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  &:after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: $btn-grey;
+    border-radius: 10px;
+    z-index: -2;
+  }
+  &:before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    height: 100%;
+    background-color: $btn-green;
+    transition: all 0.3s;
+    border-radius: 10px;
+    z-index: -1;
+  }
+  &:hover {
+    color: $text-white;
+    &:before {
+      width: 100%;
+    }
+  }
+  &--green {
+    background-color: $btn-green;
+    &:before {
+      background-color: darken($btn-green, 15%);
+    }
+    &:after {
+      background-color: $btn-green;
+    }
+  }
+  &--grey {
+    background-color: $btn-grey;
+    &:before {
+      background-color: darken($btn-grey, 15%);
+    }
+    &:after {
+      background-color: $btn-grey;
+    }
+  }
+  &--callback-mob {
+    display: none;
+    width: 100%;
+    height: 40px;
+    border: 1px solid $btn-green;
+    color: $btn-green;
+    background-color: #ffffff;
+    max-width: 345px;
+    margin: 0 auto;
+    &:after {
+      background-color: #ffffff;
+    }
+  }
+}
+
+@media (max-width: 760px) {
+  .ss-btn {
+    display: flex;
+  }
+}
