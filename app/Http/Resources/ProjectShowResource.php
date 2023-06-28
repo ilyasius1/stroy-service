@@ -38,12 +38,14 @@ class ProjectShowResource extends JsonResource
 
         $full_construction_details = explode("\r\n", $this->full_construction);
         $without_finishing_details = explode("\r\n", $this->without_finishing);
-
+        $urls = $this->images->map(function ($value) {
+            return asset("storage/$value");
+        });
         return [
             'id' => $this->id,
             'idCategory' => $this->category_id,
             'projectName' => $this->title,
-            'images' => $this->images,
+            'images' => $urls,
             's' => $this->s,
             'size'=> [
                 'width' =>  $this->width,

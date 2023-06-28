@@ -18,7 +18,7 @@ class ProjectIndexResource extends JsonResource
             'id' => $this->id,
             'idCategory' => $this->category_id,
             'projectName' => $this->title,
-            'imgSrc' => asset("storage/$this->images[0]"),
+            'imgSrc' => asset($this->images->isNotEmpty() ? "storage/" . $this->images[0] : ''),
             's' => $this->s,
             'size'=> [
                 'width' =>  $this->width,
