@@ -27,29 +27,22 @@ export default {
     SET_PROJECTS(state, projects) {
       state.projects = projects;
     },
-    SET_IS_LOADED(state, isLoaded) {
-      state.isLoaded = isLoaded;
-    },
   },
   actions: {
-    async fetchHouse(ctx , id) {
-        ctx.commit('SET_IS_LOADED', false);
+    async fetchHouse( ctx , id) {
       const house = await API('house',id);
         ctx.commit('SET_HOUSE', house);
-        ctx.commit('SET_IS_LOADED', true);
     },
     async fetchHousesOnPromo(ctx) {
-        ctx.commit('SET_IS_LOADED', false);
       const housesOnPromo = await API('promo-house');
-        ctx.commit('SET_HOUSES_ON_PROMO', housesOnPromo);
-        ctx.commit('SET_IS_LOADED', true);
+      ctx.commit('SET_HOUSES_ON_PROMO', housesOnPromo);
     },
-    async fetchProjects(ctx, id) {
-      // const projects = dataProjects.filter((el) => el.idCategory === id);
-        ctx.commit('SET_IS_LOADED', false);
-        const projects = await API('project', id);
-        ctx.commit('SET_PROJECTS', projects);
-        ctx.commit('SET_IS_LOADED', true);
+    async fetchProjects({ commit }, id) {
+      const projects = await API('project', id);
+      commit('SET_PROJECTS', projects);
+    },
+    unsetHouse(ctx) {
+        ctx.commit('SET_HOUSE', null);
     },
   },
 };

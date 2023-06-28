@@ -3,6 +3,7 @@ import categories from './modules/categories.js';
 import house from './modules/house.js';
 import promo from './modules/promo.js';
 import modalModule from './modules/modal';
+import sizes from '@/store/modules/sizes';
 
 export default createStore({
   modules: {
@@ -10,5 +11,6 @@ export default createStore({
     house,
     promo,
     modalModule,
+    sizes,
   },
 });

@@ -33,7 +33,7 @@ class ProjectController extends Controller
     public function promoHouse()
     {
         $projects = Project::query()
-            ->whereNotNull ('deal_id', )
+            ->whereNotNull ('deal_id' )
             ->get();
         return ProjectIndexResource::collection($projects);
     }

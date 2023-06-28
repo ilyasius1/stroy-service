@@ -1,10 +1,11 @@
 <template>
-  <SsLoader v-if="loading" />
-  <div class="ss-house" v-if="!loading">
+  <SsLoader v-if="loading && !hasError" />
+  <div class="ss-house" v-if="!loading && !hasError">
     <SsSectionHeader>Проект дома {{ house.projectName }}</SsSectionHeader>
     <div class="ss-house__info">
       <div class="ss-house__slider">
         <img
+          v-if='images'
           :src="images[currentImage]"
           :alt="house.projectName"
           class="ss-house__slider-image"
@@ -25,9 +26,9 @@
           <p class="general__header">Без отделки</p>
           <p>Цены:</p>
           <div class="general__prices">
-            <p v-for="(price, key) in house.prices.withoutFinishing" :key="key">
+            <p v-for="(price, key) in house.prices?.withoutFinishing" :key="key">
               <span> {{ formattedPrice(price.price) }} Р</span> ({{
-                sizes[price.sizeId]
+                    findSize(price.sizeId).title
               }}
               под усадку)
             </p>
@@ -60,9 +61,9 @@
           <p class="general__header">Под ключ</p>
           <p>Цены:</p>
           <div class="general__prices">
-            <p v-for="(price, key) in house.prices.fullConstruction" :key="key">
+            <p v-for="(price, key) in house.prices?.fullConstruction" :key="key">
               <span> {{ formattedPrice(price.price) }} Р</span> ({{
-                sizes[price.sizeId]
+                    findSize(price.sizeId).title
               }}
               под ключ)
             </p>
@@ -120,7 +121,7 @@
           <div class="variables__list-cont">
             <ol class="variables__list">
               <li
-                v-for="(full, key) in house.complects.fullConstruction"
+                v-for="(full, key) in house.complects?.fullConstruction"
                 :key="key"
               >
                 {{ full }}
@@ -136,7 +137,7 @@
           <div class="variables__list-cont">
             <ol class="variables__list">
               <li
-                v-for="(full, key) in house.complects.withoutFinishing"
+                v-for="(full, key) in house.complects?.withoutFinishing"
                 :key="key"
               >
                 {{ full }}
@@ -171,5 +172,6 @@
       :setNextImage="setNextImage"
     />
   </div>
+  <SsNetworkError v-if='hasError'/>
 </template>
 <script src="./ss-house.js"></script>

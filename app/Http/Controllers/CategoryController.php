@@ -14,4 +14,10 @@ class CategoryController extends Controller
         $categories = Category::query()->get();
         return CategoryResource::collection($categories);
     }
+
+    public function getById($id)
+    {
+        $category = Category::query()->where('id', $id)->get();
+        return CategoryResource::collection($category);
+    }
 }

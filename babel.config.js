@@ -1,5 +1,5 @@
 module.exports = {
-  presets: ['@vue/cli-plugin-babel/preset'],
+  presets: ['vite-plugin-babel'],
   plugins: [
     [
       'module-resolver',

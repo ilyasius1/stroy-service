@@ -3,11 +3,14 @@
 ## Installation
 
 ```bash
-composer require moonshine/moonshine
+composer install
 
 php artisan moonshine:install
 
 php artisan moonshine:user
+
+npm install
+npm 
 ```
 # API
 ### Получить категории домов

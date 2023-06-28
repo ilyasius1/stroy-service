@@ -5,6 +5,7 @@ use App\Http\Controllers\CallRequestController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\SizesController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -24,9 +25,11 @@ use Illuminate\Support\Facades\Route;
 //});
 
 Route::get('/get-category', [CategoryController::class, 'index']);
+Route::get('/category/{category}', [CategoryController::class, 'getById']);
 Route::get('/project/{category}', [ProjectController::class, 'index']);
 Route::get('/house/{project}', [ProjectController::class, 'show']);
 Route::get('/promo-house', [ProjectController::class, 'promoHouse']);
+Route::get('/sizes', [SizesController::class, 'index']);
 Route::post('/add-call', [CallController::class, 'store']);
 Route::post('/add-order', [OrderController::class, 'store']);
 //Route::post('/mobile-signup-view-request', [Page::class, 'mobileSignUpViewRequest']); //"Записаться на просмотр" мобильная версия

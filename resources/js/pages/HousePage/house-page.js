@@ -9,4 +9,8 @@ export default {
   data() {
     return {};
   },
+  beforeRouteLeave(to, from, next) {
+    this.$store.dispatch('unsetHouse');
+    next();
+  },
 };

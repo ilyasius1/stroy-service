@@ -30,14 +30,14 @@ export default {
     async fetchCategories(ctx) {
       ctx.commit('SET_IS_LOADED', false);
       const categories = await API('get-category');
-      await ctx.commit('SET_CATEGORIES', categories);
+      ctx.commit('SET_CATEGORIES', categories);
       ctx.commit('SET_IS_LOADED', true);
     },
     async fetchCategory(ctx, id) {
-      ctx.commit('SET_IS_LOADED', false);
-      const category = await API('get-category',id);
-      await ctx.commit('SET_CATEGORY', category);
-      await ctx.commit('SET_IS_LOADED', true);
+      // ctx.commit('SET_IS_LOADED', false);
+      const category = await API('category',id);
+      ctx.commit('SET_CATEGORY', category);
+      // ctx.commit('SET_IS_LOADED', true);
     },
   },
 };

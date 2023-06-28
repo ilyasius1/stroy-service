@@ -3,37 +3,43 @@ import SsProject from './ss-project/SsProject.vue';
 import SsSectionHeader from '@/elements/ss-section-header/SsSectionHeader.vue';
 import SsLoader from '@/elements/ss-loader/SsLoader.vue';
 import SsBtn from '@/elements/ss-btn/SsBtn.vue';
+import SsNetworkError from '@/components/ss-network-error/SsNetworkError.vue';
 export default {
   name: 'SsProjects',
   data() {
     return {
       loading: true,
-      projects: {},
+      hasError: false,
     };
   },
-  computed: { ...mapGetters(['getProjects']) },
   components: {
-    SsProject,
-    SsSectionHeader,
-    SsLoader,
-    SsBtn,
+      SsProject,
+      SsSectionHeader,
+      SsLoader,
+      SsBtn,
+      SsNetworkError,
   },
+  computed: { ...mapGetters(['getProjects']) },
   methods: {
     ...mapActions(['fetchProjects']),
     async loadData() {
       try {
         this.loading = true;
-        this.projects = await this.fetchProjects(this.$route.params.id);
-        this.loading = false;
+        this.fetchProjects(this.$route.params.id)
+            .then(()=> {
+                this.loading = false;
+            })
       } catch (e) {
-        console.log(e);
+          this.loading = false;
+          this.hasError = true;
+          console.log(e);
       }
     },
   },
-  beforeRouteUpdate() {
-    this.loadData();
+  async beforeRouteUpdate() {
+      await this.loadData();
   },
-  async created() {
-    this.loadData();
+  async beforeMount() {
+     await this.loadData();
   },
 };

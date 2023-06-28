@@ -3,6 +3,7 @@ import MainPage from '@/pages/MainPage/MainPage.vue';
 import ProjectPage from '@/pages/ProjectPage/ProjectPage.vue';
 import HousePage from '@/pages/HousePage/HousePage.vue';
 import PageNotFound from "@/pages/PageNotFound.vue";
+import store from '@/store';
 
 const routes = [
   {
@@ -33,8 +34,13 @@ const router = createRouter({
   history: createWebHistory(),
   routes,
   scrollBehavior() {
-    return { top: 0 };
+    return {
+      top: 0,
+    };
   },
+});
+router.beforeEach(() => {
+    store.dispatch('closeModal');
 });
 
 export default router;

@@ -2,6 +2,7 @@ export default {
   state: {
     isOpen: false,
     header: 'Оформление заказа',
+    modalHouse: null,
   },
   getters: {
     isModalOpen(state) {
@@ -18,20 +19,24 @@ export default {
     SET_HEADER(state, header) {
       state.header = header;
     },
-    SET_HOUSE(state, house) {
-      state.house = house;
+    SET_MODAL_HOUSE(state, house) {
+      state.modalHouse = house;
     },
   },
   actions: {
-    openModal(ctx, { header = null }) {
-      if (header !== null) {
+    openModal(ctx, { header = null, house = null }) {
+      if (header) {
         ctx.commit('SET_HEADER', header);
+      }
+      else {
+        ctx.commit('SET_HEADER', 'Оформление заказа');
       }
       ctx.commit('SET_STATUS', true);
     },
     closeModal(ctx) {
       ctx.commit('SET_STATUS', false);
-      ctx.commit('SET_HEADER', 'Оформление заказа');
+      ctx.commit('SET_HEADER', null);
     },
+
   },
 };

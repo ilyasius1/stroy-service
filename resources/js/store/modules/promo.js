@@ -1,4 +1,3 @@
-import dataPromo from '@/store/test-data/d-promo.js';
 import API from "@/store/helpers/api";
 export default {
   state: {

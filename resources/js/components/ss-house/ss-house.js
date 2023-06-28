@@ -3,6 +3,8 @@ import SsSectionHeader from '@/elements/ss-section-header/SsSectionHeader.vue';
 import SsModalGallery from '@/components/ss-modal-gallery/SsModalGallery.vue';
 import SsBtn from '@/elements/ss-btn/SsBtn.vue';
 import { mapActions, mapGetters } from 'vuex';
+import SsNetworkError from '@/components/ss-network-error/SsNetworkError.vue';
+
 export default {
   name: 'SsHouse',
   components: {
@@ -10,34 +12,41 @@ export default {
     SsSectionHeader,
     SsBtn,
     SsModalGallery,
+    SsNetworkError,
   },
   data() {
     return {
-      loading: true,
+      loading: false,
+      hasError: false,
       house: {},
-      sizes: {},
+      sizes: [],
       currentImage: 0,
       zoom: false,
       window: document.querySelector('body'),
     };
   },
   computed: {
-    ...mapGetters(['getHouse', 'getCategory']),
+    ...mapGetters(['getHouse', 'getCategory', 'getSizes']),
     images() {
-      return this.house.images;
+      return this.getHouse?.images;
     },
   },
   methods: {
-    ...mapActions(['fetchHouse', 'fetchCategory', 'openModal']),
+    ...mapActions(['fetchHouse', 'fetchCategory', 'fetchSizes', 'openModal']),
     async loadData() {
       try {
         this.loading = true;
-        await this.fetchHouse(this.$route.params.id);
-        this.house = this.getHouse;
-        await this.fetchCategory(this.house.idCategory);
-        this.sizes = this.getCategory.sizes;
-        this.loading = false;
+        this.fetchHouse(this.$route.params.id)
+            .then(() => {
+                this.house = this.getHouse;
+                this.fetchSizes()
+                    .then(() => {
+                        this.sizes = this.getSizes;
+                        this.loading = false;
+                    })
+            });
       } catch (e) {
+          this.hasError = true;
         console.log(e);
       }
     },
@@ -46,7 +55,7 @@ export default {
     },
 
     setNextImage() {
-      if (this.currentImage < this.images.length - 1) {
+      if (this.currentImage < this.images?.length - 1) {
         this.currentImage++;
       } else {
         this.currentImage = 0;
@@ -56,7 +65,7 @@ export default {
       if (this.currentImage > 0) {
         this.currentImage--;
       } else {
-        this.currentImage = this.images.length - 1;
+        this.currentImage = this.images?.length - 1;
       }
     },
     openGallery(imgNumber) {
@@ -68,9 +77,12 @@ export default {
       this.zoom = false;
       this.window.style.overflow = 'scroll';
     },
+    findSize(id) {
+      return this.sizes.find(size => size.id === id);
+    }
   },
   async created() {
-    this.loadData();
+    await this.loadData();
   },
-  mounted() {},
+
 };
