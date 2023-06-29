@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('project_id');
+            $table->foreignId('project_id')->nullable();
             $table->string('fio');
             $table->string('email');
             $table->string('phone');
-            $table->text('comments');
+            $table->text('comments')->nullable();
             $table->boolean('is_processed')->nullable();
             $table->timestamps();
         });

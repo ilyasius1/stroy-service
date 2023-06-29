@@ -51,7 +51,7 @@
                             >+7 777 777 77 77</a
                         >
                         <p
-                            @click="openModal({ header: 'Заказать звонок' })"
+                            @click="openModal({ header: 'Заказать звонок', isPhoneCallRequest: true})"
                             class="ss-header__call-back-ring"
                         >
                             Заказать звонок

@@ -1,7 +1,7 @@
 import API from "@/store/helpers/api";
 export default {
   state: {
-    house: {},
+    house: null,
     isLoaded: false,
     housesOnPromo: [],
     projects: [],

@@ -22,11 +22,11 @@ class OrderRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'project_id' => 'required|exists:projects,id',
+            'project_id' => 'sometimes',
             'fio' => 'required|string',
             'email' => 'required|email',
             'phone' => 'required',
-            'comments' => 'required',
+            'comments' => 'sometimes',
             'is_processed' => 'sometimes'
         ];
     }

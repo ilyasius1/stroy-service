@@ -5,6 +5,7 @@
       @click="
         openModal({
           header: 'Заказать звонок',
+          isPhoneCallRequest: true
         })
       "
       class="ss-btn--callback-mob"
