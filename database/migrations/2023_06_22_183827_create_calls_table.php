@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('fio');
             $table->string('email');
             $table->string('phone');
-            $table->text('comments');
+            $table->text('comments')->nullable();
             $table->boolean('is_processed')->nullable();
             $table->timestamps();
         });

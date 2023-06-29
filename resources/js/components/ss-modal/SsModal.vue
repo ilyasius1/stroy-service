@@ -1,6 +1,6 @@
 <template>
   <div class="ss-modal-overlay" @click.self="closeModal">
-    <div class="ss-modal">
+    <form type="post" @submit.prevent="sendRequest" class="ss-modal" v-if="!showNotification">
       <SsBtn class="ss-btn--grey ss-modal__close-mob" @click="closeModal">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -24,7 +24,8 @@
         </svg>
       </SsBtn>
       <header class="ss-modal__header">{{ getHeader }}</header>
-      <p class="ss-modal__item-name" v-if="getHouse">
+      <p v-if="sendingError" class="ss-modal__error">При отправке данных произошла ошибка. Повторите попытку</p>
+      <p class="ss-modal__item-name" v-if="!isPhoneCallRequest && getHouse">
         Проект дома
         <router-link
           :to="`/house/${getHouse.id}`"
@@ -32,50 +33,69 @@
           >{{ getHouse.projectName }}</router-link
         >
       </p>
-      <label for="fio" class="ss-modal__label">ФИО<span> *</span></label>
+      <label for="fio" class="ss-modal__label">ФИО<span> *</span>
+          <span class="ss-modal__label--error">{{ (!validity.isValid && validity.fio) ? validity.fio : '' }}</span>
+      </label>
       <input
         type="text"
         name="fio"
         id="fio"
+        v-model.trim="fio"
         placeholder="Как к Вам обращаться?"
         class="ss-modal__input"
-        required
+        :class="(!validity.isValid && validity.fio) ? 'ss-modal__input--error' : ''"
       />
       <label for="email" class="ss-modal__label"
-        >Ваш Email<span> *</span></label
+        >Ваш Email<span> *</span>
+          <span class="ss-modal__label--error">{{ (!validity.isValid && validity.email) ? validity.email : '' }}</span></label
       >
       <input
         type="text"
         name="email"
         id="email"
+        v-model.trim="email"
         placeholder="Что бы мы могли прислать Вам расчет"
         class="ss-modal__input"
-        required
+        :class="(!validity.isValid && validity.email) ? 'ss-modal__input--error' : ''"
       />
       <label for="phone" class="ss-modal__label"
-        >Ваш номер телефона<span> *</span></label
+        >Ваш номер телефона<span> *</span>
+          <span class="ss-modal__label--error">{{ (!validity.isValid && validity.phone) ? validity.phone : '' }}</span></label
       >
       <input
-        type="text"
+        type="tel"
         name="phone"
         id="phone"
+        v-model.trim="phone"
         placeholder="Чтобы мы могли быстро уточнить детали"
         class="ss-modal__input"
-        required
+        :class="(!validity.isValid && validity.phone) ? 'ss-modal__input--error' : ''"
       />
       <label class="ss-modal__label" for="comment">Комментарий к заявке</label>
       <textarea
         name="comment"
         id="comment"
+        v-model="comment"
         placeholder="Укажите интересующий проект или описание к собственному проект"
         class="ss-modal__input ss-modal__input--textarea"
       ></textarea>
-      <SsBtn @click="submit" class="ss-btn--green ss-modal__send-btn"
-        >Отправить заявку</SsBtn
+      <SsBtn type="submit" class="ss-btn--green ss-modal__send-btn"
+        >{{ getButtonName }}</SsBtn
       >
       <SsBtn class="ss-btn--grey ss-modal__close" @click="closeModal"
         >Назад</SsBtn
       >
+
+      <div v-if="sending" class="ss-modal__loader-overlay">
+          <p>Отправляем заявку... Пожалуйста, подождите</p>
+          <SsLoader/>
+      </div>
+    </form>
+    <div v-if='showNotification' class="ss-modal ss-modal--notification">
+          <p class="ss-modal__header">Заявка успешно отправлена!</p>
+          <SsBtn @click="closeModal" class="ss-btn--green ss-modal__send-btn"
+          >Закрыть окно</SsBtn
+          >
     </div>
   </div>
 </template>
