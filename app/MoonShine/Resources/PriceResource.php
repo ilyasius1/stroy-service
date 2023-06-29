@@ -31,7 +31,6 @@ class PriceResource extends Resource
                         return $size->getAttributes()['title'] . ' (без отделки)';
                     }
                 }           ),
-//                BelongsTo::make('Под ключ', 'size', 'is_full_price'),
                 Text::make('Цена', 'price'),
             ])
         ];
