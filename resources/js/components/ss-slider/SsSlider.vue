@@ -25,19 +25,19 @@
                 в реальность вашу мечту!
             </div>
             <div class="slide-action__items">
-                <div
+                <router-link :to="`/house/${ random.id}`"
                     class="slide-action__item"
                     v-for="(random, key) in randomHouses"
                     :key="key"
                 >
-                    <img :src="random.images[0]" alt="" />
+                    <img :src="random.image" alt="" />
                     <div class="slide-action__item-percent">
-                        -{{ getPercent(random.promoID) }}%
+                        -{{ (random.percent) }}%
                     </div>
                     <div class="slide-action__item-bottom">
                         Проект дома {{ random.projectName }}
                     </div>
-                </div>
+                </router-link>
             </div>
         </div>
         <div class="slide">

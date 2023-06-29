@@ -46,9 +46,9 @@
                     />
                     <div class="ss-header__call-back-cont">
                         <a
-                            href="tel:+77777777777"
+                            href="tel:+78001016234"
                             class="ss-header__call-back-tel"
-                            >+7 777 777 77 77</a
+                            >8 800 101 62 34</a
                         >
                         <p
                             @click="openModal({ header: 'Заказать звонок', isPhoneCallRequest: true})"

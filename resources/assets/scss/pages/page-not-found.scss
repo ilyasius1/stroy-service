@@ -1,8 +1,29 @@
 .ss-page-not-found {
-    h1 {
-        font-size: 24px;
+    text-align: center;
+    &__title {
+        font-size: 280px;
+        font-weight: 700;
+        line-height: 341px;
+        text-transform: uppercase;
+        margin: 0 auto;
     }
-    p{
+    &__desc {
+        font-size: 36px;
+        font-weight: 700;
+        line-height: 44px;
+        margin: 0 auto 20px;
+    }
+    &__text {
         font-size: 18px;
+        font-weight: 400;
+        line-height: 22px;
+        margin: 0 auto 50px;
+        max-width: 639px;
+    }
+    &__btn {
+        width: fit-content;
+        padding: 0 20px;
+        text-decoration: none;
+        margin: 0 auto;
     }
 }

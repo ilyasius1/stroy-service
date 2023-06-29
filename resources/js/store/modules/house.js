@@ -1,7 +1,8 @@
 import API from "@/store/helpers/api";
+import router from '@/router';
 export default {
   state: {
-    house: null,
+    house: {},
     isLoaded: false,
     housesOnPromo: [],
     projects: [],
@@ -30,16 +31,31 @@ export default {
   },
   actions: {
     async fetchHouse( ctx , id) {
-      const house = await API('house',id);
-        ctx.commit('SET_HOUSE', house);
+      await API('house',id)
+        .then((house)=>{
+          ctx.commit('SET_HOUSE', house);
+        })
+        .catch((e) => {
+          if(e.response.status === 404 ) {
+            router.push('/notFound');
+          }
+        });
     },
     async fetchHousesOnPromo(ctx) {
       const housesOnPromo = await API('promo-house');
       ctx.commit('SET_HOUSES_ON_PROMO', housesOnPromo);
     },
     async fetchProjects({ commit }, id) {
-      const projects = await API('project', id);
-      commit('SET_PROJECTS', projects);
+      await API('project', id)
+        .then((projects) => {
+          commit('SET_PROJECTS', projects);
+        })
+        .catch((e) => {
+          if(e.response.status === 404 ) {
+            router.push('/notFound');
+          }
+        });
+
     },
     unsetHouse(ctx) {
         ctx.commit('SET_HOUSE', null);
