@@ -24,7 +24,14 @@ class PriceResource extends Resource
             Block::make([
                 ID::make()->sortable(),
                 BelongsTo::make('Проект', 'project'),
-                BelongsTo::make('Размер', 'size', 'title'),
+                BelongsTo::make('Размер', 'size', resource: function ($size) {
+                    if($size->getAttributes()['is_full_price']) {
+                        return $size->getAttributes()['title'] . ' (под ключ)';
+                    } else {
+                        return $size->getAttributes()['title'] . ' (без отделки)';
+                    }
+                }           ),
+//                BelongsTo::make('Под ключ', 'size', 'is_full_price'),
                 Text::make('Цена', 'price'),
             ])
         ];
