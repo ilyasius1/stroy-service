@@ -9,7 +9,7 @@
         })
       "
       class="ss-btn--callback-mob"
-      >Заказать звонок +7 777 777 77 77</SsBtn
+      >Заказать звонок 8 800 101 62 34</SsBtn
     >
     <router-view />
   </main>

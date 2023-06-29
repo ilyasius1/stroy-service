@@ -22,12 +22,18 @@ const routes = [
     name: 'house',
     props: (route) => ({ id: route.params.id }),
     component: HousePage,
+
   },
-  // {
-  //   path: '*',
-  //   name: 'notFound',
-  //   component: PageNotFound,
-  // }
+  {
+    path: '/notFound',
+    name: 'notFound',
+    component: PageNotFound,
+  },
+    {
+        path: '/:pathMatch(.*)*',
+        name: 'notFound',
+        component: PageNotFound,
+    }
 ];
 
 const router = createRouter({

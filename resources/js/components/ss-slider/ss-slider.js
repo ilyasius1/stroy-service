@@ -14,9 +14,9 @@ export default {
   },
   computed: {
     ...mapGetters(['getHousesOnPromo', 'getPromo']),
-      async randomHouses() {
+      randomHouses() {
           const firstIndex = this.getRandomindex(this.getHousesOnPromo);
-          const result = [await this.getHousesOnPromo[firstIndex]];
+          const result = [this.getHousesOnPromo[firstIndex]];
           if (this.getHousesOnPromo.length > 1) {
               const filtered = this.getHousesOnPromo.filter(
                   (el, i) => i !== firstIndex
@@ -53,6 +53,6 @@ export default {
 
   },
   async created() {
-    this.loadData();
+    await this.loadData();
   },
 };

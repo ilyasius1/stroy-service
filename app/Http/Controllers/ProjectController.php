@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Resources\ProjectIndexResource;
+use App\Http\Resources\ProjectPromoResource;
 use App\Http\Resources\ProjectShowResource;
 use App\Models\Category;
 use App\Models\Project;
@@ -34,7 +35,8 @@ class ProjectController extends Controller
     {
         $projects = Project::query()
             ->whereNotNull ('deal_id' )
+            ->with('deal')
             ->get();
-        return ProjectIndexResource::collection($projects);
+        return ProjectPromoResource::collection($projects);
     }
 }
