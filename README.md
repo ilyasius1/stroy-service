@@ -5,12 +5,25 @@
 ```bash
 composer install
 
+php artisan key:generate
+php artisan storage:link
+#~~~~~~~~~~~~~~~~~~~~~~~~~~
+#For Production:
+php artisan config:cache
+php artisan route:cache
+php artisan view:cache
+#~~~~~~~~~~~~~~~~~~~~~~~~~~
+php artisan migrate
+
 php artisan moonshine:install
 
 php artisan moonshine:user
 
+#~~~~~~~~~~~
+#For dev
 npm install
-npm 
+vite dev
+#~~~~~~~~~~~ 
 ```
 # API
 ### Получить категории домов
