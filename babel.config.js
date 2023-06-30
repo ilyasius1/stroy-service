@@ -1,5 +1,10 @@
 module.exports = {
-  presets: ['vite-plugin-babel'],
+  presets: [
+      [ 'babel-preset-vite'],
+      // [
+      //     '@babel/preset-env',
+      // ]
+  ],
   plugins: [
     [
       'module-resolver',
@@ -9,7 +14,7 @@ module.exports = {
           components: './components',
           elements: './elements',
           pages: './pages',
-          img: './assets/img',
+          img: '../assets/img',
         },
       },
     ],
