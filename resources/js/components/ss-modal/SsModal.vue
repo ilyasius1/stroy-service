@@ -76,7 +76,7 @@
         name="comment"
         id="comment"
         v-model="comment"
-        placeholder="Укажите интересующий проект или описание к собственному проект"
+        placeholder="Укажите интересующий проект или описание к собственному проекту"
         class="ss-modal__input ss-modal__input--textarea"
       ></textarea>
       <SsBtn type="submit" class="ss-btn--green ss-modal__send-btn"
