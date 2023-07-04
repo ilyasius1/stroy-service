@@ -15,8 +15,6 @@ php artisan view:cache
 #~~~~~~~~~~~~~~~~~~~~~~~~~~
 php artisan migrate
 
-php artisan moonshine:install
-
 php artisan moonshine:user
 
 #~~~~~~~~~~~
