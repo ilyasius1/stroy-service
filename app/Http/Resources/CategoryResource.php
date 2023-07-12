@@ -18,6 +18,7 @@ class CategoryResource extends JsonResource
             'id' => $this->id,
             'name' => $this->title,
             'imgSrc' => asset("storage/$this->image"),
+            'additional_services' => $this->additional_services,
         ];
     }
 }

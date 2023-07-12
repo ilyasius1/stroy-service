@@ -10,6 +10,7 @@ use MoonShine\Decorations\Column;
 use MoonShine\Decorations\Grid;
 use MoonShine\Fields\Image;
 use MoonShine\Fields\Text;
+use MoonShine\Fields\Textarea;
 use MoonShine\MoonShine;
 use MoonShine\Resources\Resource;
 use MoonShine\Fields\ID;
@@ -22,9 +23,6 @@ class CategoryResource extends Resource
 	public static string $title = 'Типы домов';
 
     public string $titleField = 'title';
-
-    protected bool $editInModal = true;
-    protected bool $createInModal = true;
 
 	public function fields(): array
 	{
@@ -43,7 +41,11 @@ class CategoryResource extends Resource
                             ->dir('images/category')
                             ->hideOnIndex(),
                     ]),
-                ])->columnSpan(6)
+                    Block::make([
+                        Textarea::make('Дополнительные услуги', 'additional_services')
+                            ->hideOnIndex(),
+                    ]),
+                ])->columnSpan(12),
             ]),
 
 

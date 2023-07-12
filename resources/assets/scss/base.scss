@@ -6,6 +6,9 @@ body {
     line-height: 21px;
     // min-width: $min-width-desktop;
 }
+a:focus {
+    outline: none;
+}
 .container {
     width: 1630px;
     padding: 0 15px;

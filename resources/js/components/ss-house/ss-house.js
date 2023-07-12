@@ -30,6 +30,12 @@ export default {
     images() {
       return this.getHouse?.images;
     },
+      fullConstructionPrices() {
+          return this.house.prices?.fullConstruction?.sort(this.comparePrices);
+      },
+      withoutFinishingPrices() {
+          return this.house.prices?.withoutFinishing?.sort(this.comparePrices);
+      }
   },
   methods: {
     ...mapActions(['fetchHouse', 'fetchCategory', 'fetchSizes', 'openModal']),
@@ -79,6 +85,9 @@ export default {
     },
     findSize(id) {
       return this.sizes.find(size => size.id === id);
+    },
+    comparePrices(a, b) {
+        return a.price - b.price;
     }
   },
   async created() {

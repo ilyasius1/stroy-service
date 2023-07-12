@@ -9,12 +9,14 @@ export default {
     return {
       loading: true,
       promo: [],
-      housesOnPromo: [],
     };
   },
   computed: {
     ...mapGetters(['getHousesOnPromo', 'getPromo']),
       randomHouses() {
+        if(!this.getHousesOnPromo || this.getHousesOnPromo.length == 0){
+            return [];
+        }
           const firstIndex = this.getRandomindex(this.getHousesOnPromo);
           const result = [this.getHousesOnPromo[firstIndex]];
           if (this.getHousesOnPromo.length > 1) {

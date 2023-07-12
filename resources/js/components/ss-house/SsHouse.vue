@@ -26,7 +26,7 @@
           <p class="general__header">Без отделки</p>
           <p>Цены:</p>
           <div class="general__prices">
-            <p v-for="(price, key) in house.prices?.withoutFinishing" :key="key">
+            <p v-for="(price, key) in withoutFinishingPrices" :key="key">
               <span> {{ formattedPrice(price.price) }} Р</span> ({{
                     findSize(price.sizeId).title
               }}
@@ -61,7 +61,7 @@
           <p class="general__header">Под ключ</p>
           <p>Цены:</p>
           <div class="general__prices">
-            <p v-for="(price, key) in house.prices?.fullConstruction" :key="key">
+            <p v-for="(price, key) in fullConstructionPrices" :key="key">
               <span> {{ formattedPrice(price.price) }} Р</span> ({{
                     findSize(price.sizeId).title
               }}
@@ -116,7 +116,7 @@
         <div class="variables__col">
           <div class="variables__header variables__header--fullConstruction">
             <p>Под ключ</p>
-            <span>4 995 000Р</span>
+            <span>{{ fullConstructionPrices[0]?.price }}Р</span>
           </div>
           <div class="variables__list-cont">
             <ol class="variables__list">
@@ -132,7 +132,7 @@
         <div class="variables__col">
           <div class="variables__header variables__header--withoutFinishing">
             <p>Без отделки</p>
-            <span>2 000 000Р</span>
+            <span>{{ withoutFinishingPrices[0]?.price }}Р</span>
           </div>
           <div class="variables__list-cont">
             <ol class="variables__list">
@@ -150,30 +150,10 @@
     <div class="ss-house__services services">
       <SsSectionHeader>Дополнительные услуги</SsSectionHeader>
         <ul>
-          <li>Сухой профилированный брус 95х145 мм. 25 000 р.</li>
-          <li>Сухой профилированный брус 145х145 мм. 28 000 р.</li>
-          <li>Свайно-винтовой фундамент. 54 000 р.</li>
-          <li>Ленточно-армированный фундамент 300х700(h) мм. 118 000 р.</li>
-          <li>Зенкование гвоздей (засвирловка) 10 500 р.</li>
-          <li>Скидка 50%! Сборка брусовых стен на деревянные нагеля. 28 500 р.</li>
-          <li>Двойная обвязка основания – брус 150х150 мм. 9 000 р.</li>
-          <li>Дополнительный венец из бруса – 95х145 мм. 9 000 р.</li>
-          <li>Дополнительный венец из бруса – 145х145 мм. 11 000 р.</li>
-          <li>Дополнительная брусовая перегородка 1 п.м. – 95×145 мм. 4 500 р.</li>
-          <li>Дополнительная каркасная перегородка 1 п.м. – 40×100 мм. 4 000 р.</li>
-          <li>Фронтоны из профилированного бруса – 95х145 мм. 10 500 р.</li>
-          <li>Фронтоны из профилированного бруса – 145х145 мм. 15 000 р.</li>
-          <li>Подоконник с выступом 150 мм. 1 000 р.</li>
-          <li>Дополнительное окно с установкой. 4 000 р.</li>
-          <li>Дополнительная дверь с установкой. 4 000 р.</li>
-          <li>Окно ПВХ (однокамерный) – 1.0х1.2 м. 6 000 р.</li>
-          <li>Ройки – усадочный брусок (за 1 проём). 2 000 р.</li>
-          <li>Подкровельная мембранная плёнка. 8 000 р.</li>
-          <li>Кровля металлочерепица «Монтерей» — толщина 0.4 – 0.5 мм. 20 000 р.</li>
-          <li>Обработка основания, лаг, черновых полов – антисептиком. 8 000 р.</li>
-          <li>Покраска дома с наружной стороны – Акватекс. 24 000 р.</li>
-          <li>Бытовка для проживания бригады – 2.3х3.0 м. 20 000 р.</li>
-          <li>Аренда генератора на весь срок строительства (бензин заказчика). 12 000 р.</li>
+          <li v-for="(service, key) in house.additionalServices"
+              :key="key">
+              {{ service }}
+          </li>
       </ul>
     </div>
     <SsModalGallery
