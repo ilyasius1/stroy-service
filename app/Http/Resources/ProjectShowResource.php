@@ -35,7 +35,10 @@ class ProjectShowResource extends JsonResource
                 }
             }
         }
-
+        $additional_services = [];
+        if ($this->category->additional_services) {
+            $additional_services = explode("\r\n", $this->category->additional_services);
+        }
         $full_construction_details = explode("\r\n", $this->full_construction);
         $without_finishing_details = explode("\r\n", $this->without_finishing);
         $urls = $this->images->map(function ($value) {
@@ -67,6 +70,7 @@ class ProjectShowResource extends JsonResource
                 'fullConstruction' => $full_construction_prices,
                 'withoutFinishing' => $without_finishing_prices,
             ],
+            'additionalServices' => $additional_services,
         ];
     }
 }

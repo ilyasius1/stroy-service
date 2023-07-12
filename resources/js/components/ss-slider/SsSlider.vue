@@ -6,7 +6,7 @@
         :speed="2000"
         v-if="!loading"
     >
-        <div class="slide slide-action">
+        <div v-if="randomHouses.length > 0" class="slide slide-action">
             <div class="slide-action__get">
                 <img
                     src="@assets/img/ss-slider/coins_coin_money_cash_icon_185964.png"
