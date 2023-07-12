@@ -27,7 +27,7 @@
           <p>Цены:</p>
           <div class="general__prices">
             <p v-for="(price, key) in withoutFinishingPrices" :key="key">
-              <span> {{ formattedPrice(price.price) }} Р</span> ({{
+              <span> {{ formattedPrice(price.price) }} РУБ</span> ({{
                     findSize(price.sizeId).title
               }}
               под усадку)
@@ -62,7 +62,7 @@
           <p>Цены:</p>
           <div class="general__prices">
             <p v-for="(price, key) in fullConstructionPrices" :key="key">
-              <span> {{ formattedPrice(price.price) }} Р</span> ({{
+              <span> {{ formattedPrice(price.price) }} РУБ</span> ({{
                     findSize(price.sizeId).title
               }}
               под ключ)
@@ -116,7 +116,7 @@
         <div class="variables__col">
           <div class="variables__header variables__header--fullConstruction">
             <p>Под ключ</p>
-            <span>{{ fullConstructionPrices[0]?.price }}Р</span>
+            <span>{{ formattedPrice(fullConstructionPrices[0]?.price) }} Р</span>
           </div>
           <div class="variables__list-cont">
             <ol class="variables__list">
@@ -132,7 +132,7 @@
         <div class="variables__col">
           <div class="variables__header variables__header--withoutFinishing">
             <p>Без отделки</p>
-            <span>{{ withoutFinishingPrices[0]?.price }}Р</span>
+            <span>{{ formattedPrice(withoutFinishingPrices[0]?.price) }} Р</span>
           </div>
           <div class="variables__list-cont">
             <ol class="variables__list">
