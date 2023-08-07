@@ -116,7 +116,7 @@
         <div class="variables__col">
           <div class="variables__header variables__header--fullConstruction">
             <p>Под ключ</p>
-            <span>{{ formattedPrice(fullConstructionPrices[0]?.price) }} Р</span>
+            <span v-if='typeof fullConstructionPrices[0]?.price !== "undefined"'>{{ formattedPrice(fullConstructionPrices[0]?.price) }} Р</span>
           </div>
           <div class="variables__list-cont">
             <ol class="variables__list">
@@ -132,7 +132,7 @@
         <div class="variables__col">
           <div class="variables__header variables__header--withoutFinishing">
             <p>Без отделки</p>
-            <span>{{ formattedPrice(withoutFinishingPrices[0]?.price) }} Р</span>
+            <span v-if='typeof withoutFinishingPrices[0]?.price !== "undefined"'>{{ formattedPrice(withoutFinishingPrices[0]?.price) }} Р</span>
           </div>
           <div class="variables__list-cont">
             <ol class="variables__list">
